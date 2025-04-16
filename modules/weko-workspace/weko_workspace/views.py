@@ -959,8 +959,8 @@ def item_register_save():
 
             handle_check_and_prepare_publish_status(list_record)
 
-
-            request_info = {}
+            user_id = current_user.get_id() if current_user else -1
+            request_info = {"user_id": user_id}
 
             register_result = import_items_to_system(list_record[0], request_info=request_info)
             if not register_result.get("success"):
